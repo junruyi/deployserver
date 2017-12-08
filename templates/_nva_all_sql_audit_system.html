@@ -1,0 +1,71 @@
+{% load i18n %}
+  
+<li class="nav-item  ">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="icon-user"></i>
+        <span class="title">{% trans 'Account management' %}</span>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item  ">
+            <a href="{% url 'users:role-list' %}" class="nav-link ">
+                <span class="title">{% trans 'Role' %}</span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="{% url 'users:user-list' %}" class="nav-link ">
+                <span class="title">{% trans 'User' %}</span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="{% trans  'users:user-group' %}" class="nav-link ">
+                <span class="title">{% trans 'User group' %}</span>
+            </a>
+        </li>
+        </ul>
+</li>
+
+<li class="heading">
+    <h3 class="uppercase">{% trans 'SQL audit system' %}</h3>
+</li>
+
+<li class="nav-item  ">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="icon-settings"></i>
+        <span class="title">{% trans 'Project config' %}</span>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item  ">
+            <a href="{% url 'sql_audit_system:project-list' %}" class="nav-link ">
+                <span class="title">{% trans 'Project list' %}</span>
+            </a>
+        </li>
+		
+		<li class="nav-item  ">
+            <a href="{% url 'sql_audit_system:add_project' %}" class="nav-link ">
+                <span class="title">{% trans 'Add project' %}</span>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="nav-item  ">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="icon-puzzle"></i>
+        <span class="title">{% trans 'Project release' %}</span>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item  ">
+            <a href="{% url 'sql_audit_system:create_online_single' %}" class="nav-link ">
+                <span class="title">{% trans 'Create online single' %}</span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="{% url 'sql_audit_system:release_list' %}" class="nav-link ">
+                <span class="title">{% trans 'Release list' %}</span>
+            </a>
+        </li>
+    </ul>
+</li>
