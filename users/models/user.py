@@ -28,6 +28,14 @@ class User(AbstractUser):
         return reverse('users:user-detail', args=(self.id,))
 
     @property
+    def password_raw(self):
+       raise AttributeError('Password raw is not a readable attribute')
+
+    @password_raw.setter
+    def password_raw(self,password_raw_):
+        self.set_password(password_raw_)
+
+    @property
     def is_valid(self):
         if self.is_active:
             return True
@@ -76,5 +84,7 @@ class User(AbstractUser):
                    email= 'admin@junruyi.cc',
                    name=_('Administrator'),
                    role='Admin',
-                   phone='13000000000'
+                   phone='13000000000',
+                   password='mtjyy123'
                    )
+        user.save()
