@@ -85,6 +85,6 @@ class User(AbstractUser):
                    name=_('Administrator'),
                    role='Admin',
                    phone='13000000000',
-                   password='mtjyy123'
+                   password_raw='mtjyy123'
                    )
         user.save()

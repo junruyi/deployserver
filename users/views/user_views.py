@@ -46,7 +46,7 @@ class UserLoginView(FormView):
 
     def get_success_url(self):
         return self.request.POST.get(
-            self.redirect_faield_name,
+            self.redirect_field_name,
             self.request.GET.get(self.redirect_field_name, reverse('index'))
         )
 
