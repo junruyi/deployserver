@@ -7,7 +7,7 @@ from .models import User
 
 
 class UserLoginForm(AuthenticationForm):
-    username = forms.CharField(label=('Username'),max_length=100)
+    username = forms.CharField(label=('Username'), max_length=100)
     password = forms.CharField(
         label=_('Password'), widget=forms.PasswordInput, max_length=100,
         strip=False)
