@@ -15,8 +15,8 @@ from django.views.generic.edit import FormView
 from formtools.wizard.views import SessionWizardView
 from django.conf import settings
 
-from .models import User
-from . import forms
+from users.models import User
+from users import forms
 
 __all__ = ['UserLoginView']
 
@@ -25,15 +25,15 @@ __all__ = ['UserLoginView']
 @method_decorator(never_cache, name='dispatch')
 class UserLoginView(FormView):
     template_name = 'users/login.html'
-    from_class = forms.UserLoginForm
-    redirect_faield_name = 'next'
+    form_class = forms.UserLoginForm
+    redirect_field_name = 'next'
 
     def get(self, request, *args, **kwargs):
         if request.user.is_staff:
             return redirect(self.get_success_url())
         return super(UserLoginView, self).get(request, *args, **kwargs)
 
-    def form_vaild(self, form):
+    def form_valid(self, form):
         auth_login(self.request, form.get_user())
         login_ip = self.request.META.get('REMOTE_ADDR', '')
         user_agent = self.request.META.get('HTTP_USER_AGENT', '')
@@ -47,6 +47,6 @@ class UserLoginView(FormView):
     def get_success_url(self):
         return self.request.POST.get(
             self.redirect_faield_name,
-            self.request.GET.get(self.redirect_faield_name, reverse('index'))
+            self.request.GET.get(self.redirect_field_name, reverse('index'))
         )
 
