@@ -30,15 +30,14 @@ ALLOWED_HOSTS = ['deployserver.junruyi.cc','127.0.0.1','123.207.14.42']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'rest_framework',
+    'captcha',
+    'users',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'captcha',
-    'users',
 ]
 AUTH_USER_MODEL = 'users.User'
 
@@ -51,7 +50,7 @@ AUTHENTICATION_BACKENDS = (
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.local.LocaleMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -62,7 +61,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'deployserver.urls'
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('users:login')
-LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale'), ]
+
 
 TEMPLATES = [
     {
@@ -126,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale'), ]
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Shanghai'
