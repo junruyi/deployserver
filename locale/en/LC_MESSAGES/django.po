@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-10 16:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/_nva_all.html:6 templates/_nva_all_deploy.html:6
+#: templates/_nva_all_sql_audit_system.html:6
+msgid "Account management"
+msgstr ""
+
+#: templates/_nva_all.html:12 templates/_nva_all_deploy.html:12
+#: templates/_nva_all_sql_audit_system.html:12 users/models/user.py:21
+msgid "Role"
+msgstr ""
+
+#: templates/_nva_all.html:17 templates/_nva_all_deploy.html:17
+#: templates/_nva_all_sql_audit_system.html:17
+msgid "User"
+msgstr ""
+
+#: templates/_nva_all.html:21 templates/_nva_all_deploy.html:21
+#: templates/_nva_all_sql_audit_system.html:21
+msgid "users:user-group"
+msgstr ""
+
+#: templates/_nva_all.html:22 templates/_nva_all_deploy.html:22
+#: templates/_nva_all_sql_audit_system.html:22
+msgid "User group"
+msgstr ""
+
+#: templates/_nva_all.html:30 templates/_nva_all_deploy.html:30
+msgid "Deploy system"
+msgstr ""
+
+#: templates/_nva_all.html:35 templates/_nva_all.html:117
+#: templates/_nva_all_deploy.html:35
+#: templates/_nva_all_sql_audit_system.html:35
+msgid "Project config"
+msgstr ""
+
+#: templates/_nva_all.html:41 templates/_nva_all.html:123
+#: templates/_nva_all_deploy.html:41
+#: templates/_nva_all_sql_audit_system.html:41
+msgid "Project list"
+msgstr ""
+
+#: templates/_nva_all.html:47 templates/_nva_all.html:129
+#: templates/_nva_all_deploy.html:47
+#: templates/_nva_all_sql_audit_system.html:47
+msgid "Add project"
+msgstr ""
+
+#: templates/_nva_all.html:55 templates/_nva_all.html:138
+#: templates/_nva_all_deploy.html:55
+#: templates/_nva_all_sql_audit_system.html:56
+msgid "Project release"
+msgstr ""
+
+#: templates/_nva_all.html:61 templates/_nva_all.html:144
+#: templates/_nva_all_deploy.html:61
+#: templates/_nva_all_sql_audit_system.html:62
+msgid "Create online single"
+msgstr ""
+
+#: templates/_nva_all.html:66 templates/_nva_all.html:149
+#: templates/_nva_all_deploy.html:66
+#: templates/_nva_all_sql_audit_system.html:67
+msgid "Release list"
+msgstr ""
+
+#: templates/_nva_all.html:74 templates/_nva_all_deploy.html:74
+msgid "Global config management"
+msgstr ""
+
+#: templates/_nva_all.html:80 templates/_nva_all_deploy.html:80
+msgid "Env list"
+msgstr ""
+
+#: templates/_nva_all.html:88 templates/_nva_all_deploy.html:88
+msgid "Statistics"
+msgstr ""
+
+#: templates/_nva_all.html:94 templates/_nva_all_deploy.html:94
+msgid "By environment statistics"
+msgstr ""
+
+#: templates/_nva_all.html:99 templates/_nva_all_deploy.html:99
+msgid "By project statistics"
+msgstr ""
+
+#: templates/_nva_all.html:111 templates/_nva_all_sql_audit_system.html:29
+msgid "SQL audit system"
+msgstr ""
+
+#: templates/captcha/image.html:3
+msgid "Play CAPTCHA as audio file"
+msgstr ""
+
+#: templates/captcha/text_field.html:4
+msgid "Captcha"
+msgstr ""
+
+#: users/forms.py:12 users/templates/users/login.html:96
+#: users/templates/users/login.html:97
+msgid "Password"
+msgstr ""
+
+#: users/forms.py:51
+msgid "Old password error"
+msgstr ""
+
+#: users/forms.py:59
+msgid "Password does not match"
+msgstr ""
+
+#: users/models/user.py:13 users/models/user.py:85
+msgid "Administrator"
+msgstr ""
+
+#: users/models/user.py:14
+msgid "Porject manager"
+msgstr ""
+
+#: users/models/user.py:15
+msgid "Development"
+msgstr ""
+
+#: users/models/user.py:17 users/templates/users/login.html:93
+#: users/templates/users/login.html:94
+msgid "Username"
+msgstr "用户名"
+
+#: users/models/user.py:18
+msgid "Name"
+msgstr "名称"
+
+#: users/models/user.py:19
+msgid "Email"
+msgstr "邮件"
+
+#: users/models/user.py:20
+msgid "Phone"
+msgstr "电话号码"
+
+#: users/templates/users/login.html:76
+msgid "Captcha invalid"
+msgstr "验证码无效"
+
+#: users/templates/users/login.html:100
+msgid "Login"
+msgstr "登陆"
