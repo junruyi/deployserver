@@ -112,7 +112,7 @@ msgstr ""
 
 #: templates/captcha/text_field.html:4
 msgid "Captcha"
-msgstr ""
+msgstr "验证码"
 
 #: users/forms.py:12 users/templates/users/login.html:96
 #: users/templates/users/login.html:97
