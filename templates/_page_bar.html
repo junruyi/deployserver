@@ -1,0 +1,22 @@
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="">{% trans 'Dashboard' %}</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+		    {% if app %%}
+            <a href="">{{ app }}</a>
+            <i class="fa fa-circle"></i>
+			{% endif %}
+        </li>
+		{% if action %}
+            <li>
+                <span>{{ action }}</span>
+            </li>
+		{% endif %}
+    </ul>
+    
+</div>
+<!-- END PAGE BAR -->
