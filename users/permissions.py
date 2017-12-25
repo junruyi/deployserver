@@ -29,11 +29,17 @@ class IsSuperUser(IsValidUser):
             and request.user.is_superuser
 
 
-class AllUserReadOnly(IsValidUser):
+class UserReadOnly(IsValidUser):
     def has_permission(self, request, view):
         if IsValidUser.has_permission(self, request, view)\
                 and request.method in permissions.SAFE_METHODS:
             return True
         else:
-            return AllUserReadOnly.has_permission(self, request, view)
+            return UserReadOnly.has_permission(self, request, view)
 
+
+class IsCurrentUserOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj == request.user

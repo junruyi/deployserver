@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'captcha',
     'users',
+    'common',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
