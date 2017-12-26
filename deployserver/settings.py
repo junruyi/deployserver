@@ -11,21 +11,27 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import sys
 from django.urls import reverse_lazy
+from config import Config as CONFIG
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(BASE_DIR)
 
+sys.path.append(PROJECT_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$xq$8#gqv8x#!x3v0g@l93szp1jdun*p3^e-5=kik8f!&es0jx'
+SECRET_KEY = CONFIG.SECRET_KEY
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = CONFIG.DEBUG or False
 
-ALLOWED_HOSTS = ['deployserver.junruyi.cc','127.0.0.1','123.207.14.42']
+ALLOWED_HOSTS = CONFIG.ALLOWED_HOSTS or []
 
 # Application definition
 
@@ -40,8 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-AUTH_USER_MODEL = 'users.User'
 
+AUTH_USER_MODEL = 'users.User'
 ROOT_URLCONF = 'deployserver.urls'
 
 AUTHENTICATION_BACKENDS = (
@@ -63,11 +69,11 @@ ROOT_URLCONF = 'deployserver.urls'
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('users:login')
 
-SESSION_COOKIE_DOMAIN = None
-CSRF_COOKIE_DOMAIN =  None
-SESSION_COOKIE_AGE = 60 * 30
-SESSION_SAVE_EVERY_REQUEST = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_DOMAIN = CONFIG.SESSION_COOKIE_DOMAIN or None
+CSRF_COOKIE_DOMAIN =  CONFIG.CSRF_COOKIE_DOMAIN or None
+SESSION_COOKIE_AGE = CONFIG.SESSION_COOKIE_AGE or 60*30
+SESSION_SAVE_EVERY_REQUEST = CONFIG.SESSION_SAVE_EVERY_REQUEST or True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = CONFIG.SESSION_EXPIRE_AT_BROWSER_CLOSE or True
 
 TEMPLATES = [
     {
@@ -93,23 +99,23 @@ WSGI_APPLICATION = 'deployserver.wsgi.application'
 CAPTCHA_IMAGE_SIZE = (80, 33)
 CAPTCHA_FOREGROUND_COLOR = '#001100'
 CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
-CAPTCHA_TEST_MODE = False
+CAPTCHA_TEST_MODE = CONFIG.CAPTCHA_TEST_MODE or False
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
         'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'deployserver',
-        'USER': 'test',
-        'PASSWORD': 'test123',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.%s' % CONFIG.DB_ENGINE,
+        'NAME': CONFIG.DB_NAME,
+        'USER': CONFIG.DB_USER,
+        'PASSWORD': CONFIG.DB_PASSWORD,
+        'HOST': CONFIG.DB_HOST,
+        'PORT': CONFIG.DB_PORT,
    }
 }
 
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -150,3 +156,24 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+# Email config
+EMAIL_HOST = CONFIG.EMAIL_HOST
+EMAIL_PORT = CONFIG.EMAIL_PORT
+EMAIL_HOST_USER = CONFIG.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = CONFIG.EMAIL_HOST_PASSWORD
+EMAIL_USE_SSL = CONFIG.EMAIL_USE_SSL
+EMAIL_USE_TLS = CONFIG.EMAIL_USE_TLS
+EMAIL_SUBJECT_PREFIX = CONFIG.EMAIL_SUBJECT_PREFIX
+
+# Cache use redis
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'redis://:%(password)s@%(host)s:%(port)s/4' % {
+            'password': CONFIG.REDIS_PASSWORD if CONFIG.REDIS_PASSWORD else '',
+            'host': CONFIG.REDIS_HOST or '127.0.0.1',
+            'port': CONFIG.REDIS_PORT or 6379,
+        }
+    }
+}
