@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser
@@ -19,6 +21,8 @@ class User(AbstractUser):
     email = models.EmailField(max_length=30, unique=True, verbose_name=_('Email'))
     phone = models.CharField(max_length=20, blank=True, null=True, verbose_name=_('Phone'))
     role = models.CharField(choices=ROLE_CHOICES, default='Dev', max_length=10, blank=True,verbose_name=_('Role'))
+
+
     class Meta:
         permissions = (
             ('view_user', 'can view user'),
@@ -78,6 +82,18 @@ class User(AbstractUser):
         if self.role == 'Admin':
             return super(User,self).delete()
 
+    def to_json(self):
+        return OrderedDict({
+            'id': self.id,
+            'username': self.username,
+            'name': self.name,
+            'email': self.email,
+            'is_active': self.is_active,
+            'is_superuser': self.is_superuser,
+            'role': self.get_role_display(),
+            'phone': self.phone,
+
+        })
     @classmethod
     def init_account(cls):
         user = cls(username = 'admin',

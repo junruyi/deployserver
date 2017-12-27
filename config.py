@@ -52,13 +52,13 @@ class Config:
 
     CAPTCHA_TEST_MODE = False
     # Email SMTP setting, we only support smtp send mail
-    # EMAIL_HOST = 'smtp.qq.com'
-    # EMAIL_PORT = 25
-    # EMAIL_HOST_USER = ''
-    # EMAIL_HOST_PASSWORD = ''
-    # EMAIL_USE_SSL = False  # If port is 465, set True
-    # EMAIL_USE_TLS = False  # If port is 587, set True
-    # EMAIL_SUBJECT_PREFIX = '[Jumpserver] '
+    EMAIL_HOST = 'smtp.163.com'
+    EMAIL_PORT = 465
+    EMAIL_HOST_USER = 'matiejun_yy@163.com'
+    EMAIL_HOST_PASSWORD = 'mtj@8316107'
+    EMAIL_USE_SSL = True  # If port is 465, set True
+    EMAIL_USE_TLS = False  # If port is 587, set True
+    EMAIL_SUBJECT_PREFIX = '[deployserver] '
 
     def __init__(self):
         pass

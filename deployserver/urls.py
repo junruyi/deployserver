@@ -24,4 +24,7 @@ urlpatterns = [
     url(r'^$',IndexView.as_view(),name='index'),
     url(r'^users/',include('users.urls.view_urls', namespace='users')),
     url(r'^captcha/', include('captcha.urls')),
+
+    #api
+    url(r'^api/users/',include('users.urls.api_urls', namespace='api-users')),
 ]
