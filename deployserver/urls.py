@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 from .views import IndexView
 urlpatterns = [
-    url(r'^$',IndexView.as_view(),name='index'),
+    url(r'^$',IndexView.as_view(), name='index'),
     url(r'^users/',include('users.urls.view_urls', namespace='users')),
     url(r'^captcha/', include('captcha.urls')),
 

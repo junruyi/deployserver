@@ -6,5 +6,6 @@ from django.shortcuts import redirect
 
 from users.models import User
 
+
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'

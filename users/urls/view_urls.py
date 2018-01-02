@@ -7,4 +7,5 @@ app_name = 'users'
 
 urlpatterns = [
     url(r'^login$', views.UserLoginView.as_view(), name='login'),
+    url(r'^profile', views.UserProfile.as_view(), name='user-profile'),
 ]

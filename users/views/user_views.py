@@ -17,6 +17,7 @@ from django.conf import settings
 
 from users.models import User
 from users import forms
+from ..utils import AdminUserRequiredMixin
 
 __all__ = ['UserLoginView']
 
@@ -50,3 +51,27 @@ class UserLoginView(FormView):
             self.request.GET.get(self.redirect_field_name, reverse('index'))
         )
 
+
+class UserListView(AdminUserRequiredMixin, TemplateView):
+    template_name = 'users/user_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserListView, self).get_context_data(**kwargs)
+        context.update({
+            'app': _('Users'),
+            'action': _('User list'),
+        })
+        return context
+
+
+class UserProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/user_profile.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = {
+            'app': 'User',
+            'action': 'User Profile',
+        }
+        kwargs.update(context)
+        return super(UserProfileView, self).get_context_data(**kwargs)
