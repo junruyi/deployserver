@@ -49,7 +49,9 @@ var Datatable = function() {
                         "metronicAjaxRequestGeneralError": "Could not complete request. Please check your internet connection",
 
                         // data tables spesific
-                        "lengthMenu": "<span class='seperator'>|</span>View _MENU_ records",
+                        //"lengthMenu": "View _MENU_ records",
+						"lengthMenu": "<span class='seperator'>|</span>View _MENU_ records",
+						
                         "info": "<span class='seperator'>|</span>Found total _TOTAL_ records",
                         "infoEmpty": "No records found to show",
                         "emptyTable": "No data available in table",
@@ -62,6 +64,7 @@ var Datatable = function() {
                             "page": "Page",
                             "pageOf": "of"
                         }
+					
                     },
 
                     "orderCellsTop": true,
@@ -153,7 +156,7 @@ var Datatable = function() {
             }, options);
 
             tableOptions = options;
-
+		
             // create table's jquery object
             table = $(options.src);
             tableContainer = table.parents(".table-container");
@@ -168,6 +171,8 @@ var Datatable = function() {
             // initialize a datatable
             dataTable = table.DataTable(options.dataTable);
 
+
+			
             // revert back to default
             $.fn.dataTableExt.oStdClasses.sWrapper = tmp.sWrapper;
             $.fn.dataTableExt.oStdClasses.sFilterInput = tmp.sFilterInput;
@@ -181,6 +186,7 @@ var Datatable = function() {
                 $('.table-group-actions', tableWrapper).html($('.table-actions-wrapper', tableContainer).html()); // place the panel inside the wrapper
                 $('.table-actions-wrapper', tableContainer).remove(); // remove the template container
             }
+			
             // handle group checkboxes check/uncheck
             $('.group-checkable', table).change(function() {
                 var set = table.find('tbody > tr > td:nth-child(1) input[type="checkbox"]');
