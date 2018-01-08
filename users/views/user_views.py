@@ -19,7 +19,7 @@ from users.models import User
 from users import forms
 from ..utils import AdminUserRequiredMixin
 
-__all__ = ['UserLoginView']
+__all__ = ['UserLoginView', 'UserListView']
 
 @method_decorator(sensitive_post_parameters(), name='dispatch')
 @method_decorator(csrf_protect, name='dispatch')

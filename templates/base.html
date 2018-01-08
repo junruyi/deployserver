@@ -12,6 +12,7 @@
         <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
         <meta content="" name="author" />
         {% include '_head_css.html' %}
+        {% block custom_head_css %} {% endblock %}
         <link rel="shortcut icon" href="favicon.ico" /> </head>
 
 
@@ -38,7 +39,7 @@
                         <ul class="nav navbar-nav pull-right">
 
 
-                            {# {% include '_user_profile.html' %} #}
+                            {% include '_user_profile.html' %}
 
 
                             <li class="dropdown dropdown-quick-sidebar-toggler">
@@ -59,6 +60,7 @@
             <div class="page-container">
 
              {% include '_left_side_bar.html' %}
+             {% block content %}{% endblock %}
 
             </div>
         {% include '_footer.html' %}
@@ -71,6 +73,7 @@
 <script src="../assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
 {% include '_base_js.html' %}
+{% block custom_footer_js %} {% endblock %}
         <script>
             $(document).ready(function()
             {

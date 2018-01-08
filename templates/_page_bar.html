@@ -1,3 +1,4 @@
+{% load i18n %}
 <!-- BEGIN PAGE BAR -->
 <div class="page-bar">
     <ul class="page-breadcrumb">
@@ -10,7 +11,9 @@
             <a href="">{{ app }}</a>
             <i class="fa fa-circle"></i>
 			{% endif %}
+
         </li>
+
 		{% if action %}
             <li>
                 <span>{{ action }}</span>

@@ -1,0 +1,33 @@
+{% extends '_base_list.html' %}
+{% load i18n static %}
+{% block table_wrapper %}
+    <span> </span>
+    <select class="table-group-action-input form-control input-inline input-small input-sm">
+        <option value="">Select...</option>
+        <option value="Cancel">批量删除</option>
+        <option value="Cancel">批量更新</option>
+        <option value="Cancel">禁用所选</option>
+        <option value="Close">激活所选</option>
+    </select>
+    <button class="btn btn-sm green table-group-action-submit">
+    <i class="fa fa-check"></i> {% trans 'Submit' %}</button>
+{% endblock table_wrapper %}
+{% block table_container %}
+<table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
+    <thead>
+        <tr>
+            <th class="text-center">
+                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                    <input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" />
+                    <span></span>
+                </label>
+            </th>
+            <th class="text-center">{% trans 'Name' %}</th>
+            <th class="text-center">{% trans 'Username' %}</th>
+            <th class="text-center">{% trans 'Role' %}</th>
+            <th class="text-center">{% trans 'Active' %}</th>
+        </tr>
+    </thead>
+    <tbody> </tbody>
+</table>
+{% endblock %}

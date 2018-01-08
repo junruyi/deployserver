@@ -1,13 +1,10 @@
 {% load i18n %}
 
-<li class="nav-item">
- {# <a href="{% trans  'users:user-group' %}" class="nav-link "> #}
-    <a href="www.abc.com" class="nav-link ">
-<i class="icon-user"></i>
-<span class="title">{% trans 'User management' %}</span>
-
-</a>
-
+<li class="nav-item start">
+ <a href="{% url  'users:user-list' %}" class="nav-link ">
+    <i class="icon-user"></i>
+    <span class="title">{% trans 'User management' %}</span>
+ </a>
 </li>
 
 <li class="nav-item ">
