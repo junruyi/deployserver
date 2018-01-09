@@ -1,6 +1,6 @@
-var TableDatatablesAjax = function () {
+var TableDatatablesAjax = function (option) {
 
-    var handleDemo1 = function () {
+    var handleDemo1 = function (option) {
 
         var grid = new Datatable();
 
@@ -107,13 +107,14 @@ var TableDatatablesAjax = function () {
     }
 
     return {
-        init: function () {
-            handleDemo1();
+        init: function (option) {
+            handleDemo1(option);
         }
     };
 
 }();
+var option='111'
+jQuery(document).ready(function(option) {
+    TableDatatablesAjax.init(option);
+    });
 
-jQuery(document).ready(function() {
-    TableDatatablesAjax.init();
-});

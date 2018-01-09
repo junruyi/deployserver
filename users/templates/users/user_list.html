@@ -31,3 +31,49 @@
     <tbody> </tbody>
 </table>
 {% endblock %}
+
+{% block custom_footer_js %}
+   <script src="{% static 'global/scripts/datatable.js' %}" type="text/javascript"></script>
+    <script src="{% static 'global/plugins/datatables/datatables.min.js'%}" type="text/javascript"></script>
+    <script src="{% static 'global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js' %} " type="text/javascript"></script>
+    <script src="{% static 'pages/scripts/table-datatables-ajax.js' %} " type="text/javascript"></script>
+
+    <script>
+        jQuery(document).ready(function(option) {
+            var options = {
+                ele: $('#datatable_ajax'),
+                columnDefs: [
+                    {targets: 1, createdCell: function (td, cellData, rowData) {
+                        var detail_btn = '<a href="{% url "users:user-detail" pk=99991937 %}">' + cellData + '</a>';
+                        $(td).html(detail_btn.replace('99991937', rowData.id));
+                     }},
+                    {targets: 4, createdCell: function (td, cellData) {
+                        var innerHtml = cellData.length > 20 ? cellData.substring(0, 20) + '...': cellData;
+                        $(td).html('<span href="javascript:void(0);" data-toggle="tooltip" title="' + cellData + '">' + innerHtml + '</span>');
+                     }},
+                    {targets: 5, createdCell: function (td, cellData) {
+                        if (!cellData) {
+                            $(td).html('<i class="fa fa-times text-danger"></i>')
+                        } else {
+                            $(td).html('<i class="fa fa-check text-navy"></i>')
+                        }
+                     }},
+                    {targets: 6, createdCell: function (td, cellData, rowData) {
+                        var update_btn = '<a href="{% url "users:user-update" pk=99991937 %}" class="btn btn-xs btn-info">{% trans "Update" %}</a>'.replace('99991937', cellData);
+                        var del_btn = '<a class="btn btn-xs btn-danger m-l-xs btn_user_delete" data-uid="99991937" data-name="99991938">{% trans "Delete" %}</a>'
+                                .replace('99991937', cellData)
+                                .replace('99991938', rowData.name);
+                        if (rowData.id === 1 || rowData.username == "admin") {
+                            $(td).html(update_btn)
+                        } else {
+                            $(td).html(update_btn + del_btn)
+                        }
+                     }}],
+                ajax_url: '{% url "api-users:user-list" %}',
+                columns: [{data: "id"}, {data: "name" }, {data: "username" }, {data: "get_role_display" }, {data: "is_valid" }],
+                op_html: $('#actions').html()
+           };
+        TableDatatablesAjax.init(option);
+    });
+</script>
+{% endblock custom_footer_js %}
