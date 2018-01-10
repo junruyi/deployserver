@@ -1,6 +1,6 @@
-var TableDatatablesAjax = function (option) {
+var TableDatatablesAjax = function () {
 
-    var handleDemo1 = function (option) {
+    var handleDemo1 = function () {
 
         var grid = new Datatable();
 
@@ -12,24 +12,24 @@ var TableDatatablesAjax = function (option) {
                 // execute some code after table records loaded
             },
             onError: function (grid) {
-                // execute some code on network or other general error  
+                // execute some code on network or other general error
             },
             onDataLoad: function(grid) {
                 // execute some code on ajax data load
             },
             loadingMessage: 'Loading...',
-            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
+            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/s
 
                 "dom": "<'row'<'col-md-3 col-sm-12'<'#uc.pull-left'>><'col-md-6 col-sm-12 text-center'l><'col-md-3 col-sm-12'f>r>t<'row'<'col-md-3 col-sm-12'<'table-group-actions text-left'>><'col-md-6 col-sm-12  text-center 'i><'col-md-3 col-sm-12 text-right'p>>",
                 // save datatable state(pagination, sort, etc) in cookie.
-                "bStateSave": true, 
+                "bStateSave": true,
 
                  // save custom filters to the state
                 "fnStateSaveParams":    function ( oSettings, sValue ) {
                     $("#datatable_ajax tr.filter .form-control").each(function() {
                         sValue[$(this).attr('name')] = $(this).val();
                     });
-                   
+
                     return sValue;
                 },
 
@@ -42,7 +42,7 @@ var TableDatatablesAjax = function (option) {
                             element.val( oData[element.attr('name')] );
                         }
                     });
-                    
+
                     return true;
                 },
 
@@ -52,8 +52,11 @@ var TableDatatablesAjax = function (option) {
                 ],
                 "pageLength": 50, // default record count per page
                 "ajax": {
-                    "url": "http://192.168.255.130/table_ajax.php?length=15", // ajax source
+                    "type": "GET",
+                    //"url": "http://192.168.255.130/table_ajax.php?length=15", // ajax source
+                    "url": "http://123.207.14.42:8000/api/users/v1/users/"
                 },
+                "columns": [{data: "id"}, {data: "name" }, {data: "username" }, {data: "get_role_display" }, {data: "is_valid" }],
                 "ordering": false,
                 "order": [
                     [1, "asc"]
@@ -107,14 +110,12 @@ var TableDatatablesAjax = function (option) {
     }
 
     return {
-        init: function (option) {
-            handleDemo1(option);
+        init: function () {
+            handleDemo1();
         }
     };
-
 }();
-var option='111'
-jQuery(document).ready(function(option) {
-    TableDatatablesAjax.init(option);
-    });
 
+jQuery(document).ready(function() {
+    TableDatatablesAjax.init();
+    });

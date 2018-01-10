@@ -24,7 +24,7 @@ from users.models import User
 from ..utils import AdminUserRequiredMixin, user_add_success_next
 
 
-__all__ = [ 'UserListView', 'UserDetailView','UserProfileView']
+__all__ = [ 'UserListView', 'UserUpdateView', 'UserDetailView', 'UserProfileView']
 
 
 class UserListView(AdminUserRequiredMixin, TemplateView):
